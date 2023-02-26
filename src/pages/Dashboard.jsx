@@ -1,7 +1,7 @@
 import React , { useEffect }from "react";
-import SlideBar from "./SlideBar";
+import SlideBar from "../components/SlideBar"
 import HeaderInformation from "../components/HeaderInformation";
-import BodyInformation from '../components/BodyInformation';
+
 import TableInformation from '../components/TableInformation';
 
 export default function Dashboard() {
