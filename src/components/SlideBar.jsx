@@ -60,7 +60,7 @@ export default function Cards() {
               </Link>
               <Link
                 class="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-700 hover:text-gray-300"
-                to={"/"}
+                to={"/category"}
               >
                <FaInbox className="h-6 w-6" />
                 <span class="ml-2 text-sm font-medium">Book Categories</span>
