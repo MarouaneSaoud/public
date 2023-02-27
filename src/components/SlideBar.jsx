@@ -21,7 +21,7 @@ export default function Cards() {
           navigate("/login");
         } else setname(data.user);
         setimage(data.image);
-        console.log(image);
+        
         toast(`Hi ${data.user} 🦄 💯`, {
           theme: "dark",
         });
