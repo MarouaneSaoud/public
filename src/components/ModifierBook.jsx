@@ -3,7 +3,7 @@ import React from 'react'
 export default function BookForm() {
   return (
     <div>
-      <div class="min-h-screen p-6flex items-center justify-center">
+      <div class="min-h-screen mx-24 p-6 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
           <div className='mt-14'>
 
@@ -11,7 +11,7 @@ export default function BookForm() {
             <div class="bg-white rounded  shadow-lg p-4 px-4 md:p-8 mb-6">
               <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
                 <div class="text-gray-600">
-                  <p class="font-medium text-lg">New Book</p>
+                  <p class="font-medium text-lg">Update Book</p>
                   <p>Please fill out all the fields.</p>
                 </div>
 
