@@ -33,7 +33,7 @@ export default function () {
                   Detail
                 </Link>
                 <Link
-                  to={"/"}
+                  to={"/modifierbook"}
                   className="mx-1  hover:text-blue-700 active:text-black"
                 >
                   Update

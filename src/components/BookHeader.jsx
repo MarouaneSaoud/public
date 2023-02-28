@@ -30,12 +30,12 @@ export default function () {
                 />
               </svg>
               <Link
-                  to={"/add"}
+                  to={"/addbook"}
                   className="mx-1"
                 >
                   Add new Book
                 </Link>
-              
+               =
             </Link>
           </div>
         </div>
