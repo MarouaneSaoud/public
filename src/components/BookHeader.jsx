@@ -29,7 +29,13 @@ export default function () {
                   d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                 />
               </svg>
-              Add new Book
+              <Link
+                  to={"/add"}
+                  className="mx-1"
+                >
+                  Add new Book
+                </Link>
+              
             </Link>
           </div>
         </div>

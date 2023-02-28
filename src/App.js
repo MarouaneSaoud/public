@@ -10,6 +10,7 @@ import Book from './pages/Book'
 import BookDetail from './pages/BookDetail'
 import "react-toastify/dist/ReactToastify.css";
 import StoreLandingPage from "./pages/StoreLandingPage";
+import BookForm from "./pages/BookForm";
 
 
 export default function App() {
@@ -23,10 +24,11 @@ export default function App() {
         <Route exact path="/category" element={<Category />} />
         <Route exact path="/book" element={<Book />} />
         <Route exact path="/bookDetail/:id" element={<BookDetail />} />
-        <Route exact path="/Store" element={< StoreLandingPage />} />
+        <Route exact path="/store" element={< StoreLandingPage />} />
         <Route exact path="/" element={<LandingPage/>} />
         <Route exact path="*" element={<Page404 />} />
-        
+        <Route exact path="/add" element={<BookForm />} />
+
       </Routes>
     </BrowserRouter>
   );
