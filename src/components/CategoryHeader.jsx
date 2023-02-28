@@ -3,7 +3,7 @@ import CategoryForm from '../components/CategoryForm';
 
 export default function CategoryHeader() {
   const [showModel , setShowModel] = useState(false)
-  const handleClose = ()=> setShowModel(false)
+  const handleClose = ()=> {setShowModel(false)}
   return (
     <>
     <main class="p-6 sm:p-10 space-y-6">

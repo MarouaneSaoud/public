@@ -10,10 +10,10 @@ async function updateCategorie(id,categorie){
     return await http.put("/category/"+id,categorie);
 }
 async function addCategorie(categorie){
-    return await http.post("/categories",categorie);
+    return await http.post("/category",categorie);
 }
 async function deleteCategorie(id){
-    return await http.delete("/category");
+    return await http.delete("/category/"+id);
 }
 
 
