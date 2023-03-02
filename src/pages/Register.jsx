@@ -12,7 +12,7 @@ function Register() {
       navigate("/dashboard");
     }
   }, [cookies, navigate]);
-
+  // hahoma les states li ki jibo les donnes
   const [name, setname] = useState();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
@@ -24,7 +24,7 @@ function Register() {
     });
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+     // hahia l fonction chftha
     const formdata = new FormData();
     formdata.append("name", name);
     formdata.append("email", email);
@@ -33,8 +33,7 @@ function Register() {
     console.log(formdata);
     try {
       const { data } = await AuthSercices.Register(formdata);
-       console.log(data)
-       console.log(image);
+       // 7edek hnadak chi dial les if li lta7t ma dirihech f balek
       if (data) {
         if (data.errors) {
           const { email, password, name } = data.errors;
@@ -72,6 +71,7 @@ function Register() {
                     id="exampleFormControlInput2"
                     placeholder="Name"
                     onChange={(e) => setname(e.target.value)}
+                   
                   />
                 </div>
                 <div class="mb-6">

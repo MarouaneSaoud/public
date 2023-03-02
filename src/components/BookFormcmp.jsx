@@ -1,14 +1,59 @@
-import React from 'react'
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import BookService from "../Services/Book.services";
+import CategorieService from "../Services/Categorie.services";
+import { useNavigate } from "react-router-dom";
 export default function BookForm() {
+  const navigate = useNavigate();
+  const [categories, Setcategories] = useState([]);
+  const [category, setcategory] = useState();
+  const [name, setname] = useState();
+  const [description, setdescription] = useState();
+  const [isbn, setisbn] = useState();
+  const [auteur, setauteur] = useState();
+  const [editeur, setediteur] = useState();
+  const [date_publication, setdatepublication] = useState();
+  const [image, setimage] = useState(null);
+  const [price, setprice] = useState(0);
+  async function getCategories() {
+    try {
+      let result = await CategorieService.getAll();
+      Setcategories(result.data);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formdata = new FormData();
+    formdata.append("name", name);
+    formdata.append("description", description);
+    formdata.append("isbn", isbn);
+    formdata.append("auteur", auteur);
+    formdata.append("editeur", editeur);
+    formdata.append("date_publication", date_publication);
+    formdata.append("price", price);
+    formdata.append("image", image);
+    formdata.append("category", category);
+    console.log(formdata);
+    try {
+      const data  = await BookService.addBook(formdata);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     <div>
       <div class="min-h-screen mx-24 p-6 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
           <div>
-
-
             <div class="bg-white rounded  shadow-lg p-4 px-4 md:p-8 mb-6">
+             <form onSubmit={(e) => handleSubmit(e)} enctype="multipart/form-data">
               <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
                 <div class="text-gray-600">
                   <p class="font-medium text-lg">New Book</p>
@@ -19,63 +64,110 @@ export default function BookForm() {
                   <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     <div class="md:col-span-5">
                       <label for="name"> Name</label>
-                      <input  type="text" required name="name" id="name" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                      <input
+                        type="text"
+                        required
+                        name="name"
+                        id="name"
+                        class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                        onChange={(e) => setname(e.target.value)}
+                      />
                     </div>
 
                     <div class="md:col-span-5">
                       <label for="description">description</label>
-                      <textarea type="text"required name="description" id="description" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                      <textarea
+                        type="text"
+                        required
+                        name="description"
+                        id="description"
+                        class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                        onChange={(e) => setdescription(e.target.value)}
+                      />
                     </div>
 
                     <div class="md:col-span-3">
                       <label for="isbn">isbn</label>
-                      <input type="text" required name="isbn" id="isbn" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                      <input
+                        type="text"
+                        required
+                        name="isbn"
+                        id="isbn"
+                        class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                        onChange={(e) => setisbn(e.target.value)}
+                      />
                     </div>
 
                     <div class="md:col-span-2">
                       <label for="auteur">auteur</label>
-                      <input type="text" required name="auteur" id="auteur" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                      <input
+                        type="text"
+                        required
+                        name="auteur"
+                        id="auteur"
+                        class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                        onChange={(e) => setauteur(e.target.value)}
+                      />
                     </div>
 
                     <div class="md:col-span-2">
                       <label for="editeur">editeur</label>
                       <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                        <input name="editeur" requiredclass="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" />
-
+                        <input
+                          name="editeur"
+                          requiredclass="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
+                          onChange={(e) => setediteur(e.target.value)}
+                        />
                       </div>
                     </div>
 
                     <div class="md:col-span-2">
                       <label for="date_publication">date de publication</label>
                       <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                        <input name="date_publication" required type="date" id="date_publication" class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent" />
-
+                        <input
+                          name="date_publication"
+                          required
+                          type="date"
+                          id="date_publication"
+                          class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
+                          onChange={(e) => setdatepublication(e.target.value)}
+                        />
                       </div>
                     </div>
 
                     <div class="md:col-span-1">
                       <label for="zipcode">price</label>
-                      <input type="number" required name="price" id="price" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                      <input
+                        type="number"
+                        required
+                        name="price"
+                        id="price"
+                        class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                        onChange={(e) => setprice(e.target.value)}
+                      />
                     </div>
-
 
                     <div class="md:col-span-3">
                       <label for="category">category</label>
                       <div class="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
-                        
-                        <select required id="category" class="bg-gray-50 border text-gray-800 w-full bg-transparent border-gray-300  text-sm rounded-lg  block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
-                          <option selected>Choose a country</option>
-                          <option value="US">United States</option>
-                          <option value="CA">Canada</option>
-                          <option value="FR">France</option>
-                          <option value="DE">Germany</option>
+                        <select
+                          onChange={(e) => setcategory(e.target.value)}
+                          required
+                          id="category"
+                          class="bg-gray-50 border text-gray-800 w-full bg-transparent border-gray-300  text-sm rounded-lg  block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                        >
+                          <option disabled selected>
+                            Choose of category
+                          </option>
+                          {categories.map((val, key) => (
+                            <option value={val._id}>{val.name}</option>
+                          ))}
                         </select>
                       </div>
                     </div>
 
                     <div class="md:col-span-5">
-                      <div className='mt-4'>
-
+                      <div className="mt-4">
                         <div class="flex  items-center justify-start bg-grey-lighter">
                           <label class="w-full  flex flex-col items-center px-4 py-6 bg-white text-blue-500 rounded-lg shadow-lg tracking-wide uppercase  cursor-pointer hover:bg-blue-500 hover:text-white border border-blue-500">
                             <span className="mt-2 text-base leading-normal ">
@@ -91,28 +183,35 @@ export default function BookForm() {
                             <span class="mt-2 text-base leading-normal">
                               Book Image
                             </span>
-                            <input className="hidden" id="dropzone-file" type="file" required />
-
+                            <input
+                              className="hidden"
+                              id="dropzone-file"
+                              onChange={(e) => setimage(e.target.value)}
+                              type="file"
+                              required
+                            />
                           </label>
                         </div>
-
                       </div>
                     </div>
                     <div class="md:col-span-5 text-right">
                       <div class="inline-flex items-end">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add</button>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                          Add
+                        </button>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
+              </form>
             </div>
+            
+            
           </div>
-
-
+         
         </div>
       </div>
     </div>
-  )
+  );
 }
