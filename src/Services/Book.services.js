@@ -1,20 +1,27 @@
 import http from "./http.common";
 
 async function getAll() {
-    return await http.get("/book");
+  return await http.get("/book");
 }
 async function getById(id) {
-    return await http.get("/book"+id);
+  return await http.get("/book/" + id);
 }
-async function deleteBook(id){
-    return await http.delete("/book"+id);
+async function deleteBook(id) {
+  return await http.delete("/book/" + id);
 }
-async function addBook(book){
-    return await http.post("/book",book);
+async function deleteimage(image) {
+  return await http.delete("/book/deleteimage/"+image);
 }
-async function updateBook(id,book){
-    return await http.put("/book/"+id,book);
+async function AddBook(book) {
+  return await http.post("/book/", book, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 }
-const BookService ={ getAll,getById,deleteBook,addBook,updateBook}
+async function updateBook(id, book) {
+  return await http.put("/book/" + id, book);
+}
+const BookService = { getAll, getById, deleteBook, AddBook, updateBook , deleteimage };
 
 export default BookService;

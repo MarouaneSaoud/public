@@ -29,7 +29,7 @@ export default function App() {
         <Route exact path="/" element={<LandingPage/>} />
         <Route exact path="*" element={<Page404 />} />
         <Route exact path="/addbook" element={<BookForm />} />
-        <Route exact path="/modifierbook" element={<ModifierBookForm />} />
+        <Route exact path="/modifierbook/:id" element={<ModifierBookForm />} />
 
       </Routes>
     </BrowserRouter>

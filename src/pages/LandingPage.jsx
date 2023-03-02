@@ -9,41 +9,23 @@ export default function LandingPage() {
           <div class="bg-gray-200 px-4 py-4">
             <div class="w-full md:max-w-6xl md:mx-auto md:flex md:items-center md:justify-between">
               <div>
-                <a
-                  href="#"
+                <Link
+                  to={""}
                   class="inline-block py-2 text-gray-800 text-2xl font-bold"
                 >
-                  Stats.
-                </a>
+                  Book Land
+                </Link>
               </div>
 
               <div>
                 <div class="hidden md:block">
-                  <a
-                    href="#"
+                  <Link
+                    to="/store"
                     class="inline-block py-1 md:py-4 text-gray-600 mr-6 font-bold"
                   >
-                    How it Works
-                  </a>
-                  <a
-                    href="#"
-                    class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"
-                  >
-                    Solutions
-                  </a>
-
-                  <a
-                    href="#"
-                    class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"
-                  >
-                    Pricing
-                  </a>
-                  <a
-                    href="#"
-                    class="inline-block py-1 md:py-4 text-gray-500 hover:text-gray-600 mr-6"
-                  >
-                    Desktop
-                  </a>
+                    Our Store
+                  </Link>
+                  
                 </div>
               </div>
 
@@ -69,7 +51,7 @@ export default function LandingPage() {
               <div class="relative w-full md:max-w-2xl md:mx-auto text-center">
                 <h1 class="font-bold text-gray-700 text-xl sm:text-2xl md:text-5xl leading-tight mb-6">
                   Welcome to the Admin Portal for{" "}
-                  <span class="text-blue-400">Smia dial lweb site</span>
+                  <span class="text-blue-400">Book Land</span>
                 </h1>
 
                 <p class="text-gray-600 md:text-xl md:px-18">
@@ -84,7 +66,7 @@ export default function LandingPage() {
                   smoothly.
                   <br />
                   <strong class="text-gray-600">
-                    Thank you for being part of the [Smia dial lprojet] family!
+                    Thank you for being part of the Book Land family!
                     We are excited to have you here as part of our team.
                   </strong>
                   <br />

@@ -12,7 +12,7 @@ export default function () {
           </div>
 
           <div class="flex flex-wrap items-start justify-end -mb-3">
-            <Link to={""}
+            <button
               class="inline-flex px-5 py-3 text-white bg-blue-600 hover:bg-purple-700 focus:bg-blue-700 rounded-md ml-6 mb-3"
             >
               <svg
@@ -35,8 +35,8 @@ export default function () {
                 >
                   Add new Book
                 </Link>
-               =
-            </Link>
+               
+            </button>
           </div>
         </div>
       </main>

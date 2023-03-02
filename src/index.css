@@ -32,3 +32,6 @@ body {
 input {
   caret-color: #13bee4;
 }
+html {
+  scroll-behavior: smooth;
+}

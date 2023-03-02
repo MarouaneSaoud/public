@@ -1,6 +1,29 @@
-import React from "react";
+import React ,{useState , useEffect} from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import BookService from '../Services/Book.services'
 
 export default function () {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [book , setbook]= useState({});
+  const [category , setcategory] = useState({})
+  async function getbook() {
+    try {
+      let result = await BookService.getById(id)
+      setbook(result.data)
+      console.log(result.data.category)
+      setcategory(result.data.category)
+      
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getbook();
+    
+  }, []);
   return (
     <div>
       <section class="text-gray-700 body-font overflow-hidden">
@@ -9,40 +32,33 @@ export default function () {
             <img
               alt="ecommerce"
               class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-              src="https://www.whitmorerarebooks.com/pictures/medium/2465.jpg"
+              src={`http://localhost:4000/${book.image}`}
             />
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-                The Catcher in the Rye
+                {book.name}
               </h1>
               <h2 class="text-lg title-font text-gray-500 tracking-widest">
-                Author :
+                Author : {book.auteur}
               </h2>
               <h2 class="text-lg title-font text-gray-500 tracking-widest">
-                Editor :
+                Editor : {book.editeur}
               </h2>
               <h2 class="text-lg title-font text-gray-500 tracking-widest">
-                Publication date :
+                Publication date : {book.date_publication}
               </h2>
               <h2 class="text-lg title-font text-gray-500 tracking-widest">
-                Category :
+                Category : {category.name}
               </h2>
 
               <p class="leading-relaxed my-3">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima
-                iure nihil asperiores. Veniam cupiditate provident nesciunt
-                nihil, reprehenderit perferendis non illum quas natus debitis ea
-                ipsam ipsa, quo temporibus mollitia. Autem quia quaerat iste.
-                Nobis consequatur animi, dolores sequi eaque repudiandae
-                dignissimos, porro fugiat saepe similique voluptates itaque
-                reiciendis neque? Ad voluptas culpa cumque quo atque enim soluta
-                repellat! Soluta?
+                {book.description}
               </p>
               <div class="items-center pb-5 border-b-2 border-gray-200 mb-5"></div>
               <div class="flex items-center  justify-between p-4">
                 <h2 class="text-gray-900 text-lg font-bold">Price :</h2>
                 <h3 class="text-xl font-bold text-indigo-500 text-left">
-                  150.000 $
+                  {book.price} $
                 </h3>
               </div>
             </div>
