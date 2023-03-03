@@ -22,6 +22,7 @@ export default function () {
 
   useEffect(() => {
     getbook();
+    document.title = "Detail Book 📲";
     
   }, []);
   return (

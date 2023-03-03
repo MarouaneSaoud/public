@@ -10,7 +10,7 @@ async function deleteBook(id) {
   return await http.delete("/book/" + id);
 }
 async function deleteimage(image) {
-  return await http.delete("/book/deleteimage/"+image);
+  return await http.delete("/book/deleteimage/" + image);
 }
 async function AddBook(book) {
   return await http.post("/book/", book, {
@@ -22,6 +22,17 @@ async function AddBook(book) {
 async function updateBook(id, book) {
   return await http.put("/book/" + id, book);
 }
-const BookService = { getAll, getById, deleteBook, AddBook, updateBook , deleteimage };
+async function countBook() {
+  return await http.get("/book/count");
+}
+const BookService = {
+  getAll,
+  getById,
+  deleteBook,
+  AddBook,
+  updateBook,
+  deleteimage,
+  countBook,
+};
 
 export default BookService;

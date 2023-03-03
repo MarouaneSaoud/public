@@ -66,6 +66,7 @@ export default function BookForm() {
   useEffect(() => {
     getCategories();
     getbook();
+    document.title = "update Book ♻️";
     
   }, []);
   return (

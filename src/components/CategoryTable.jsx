@@ -24,6 +24,7 @@ export default function CategoryTable() {
   }
   useEffect(() => {
     getCategory();
+    document.title = "Category 💯";
   });
 
   return (
@@ -45,6 +46,9 @@ export default function CategoryTable() {
       <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
         <thead class="bg-gray-50">
           <tr>
+          <th scope="col" class="px-6 w-28 py-4 font-medium text-gray-900">
+              #
+            </th>
             <th scope="col" class="px-6 w-28 py-4 font-medium text-gray-900">
               Name
             </th>
@@ -70,6 +74,7 @@ export default function CategoryTable() {
             }
           }).map((val, key) => (
             <tr class="hover:bg-gray-50 text-base">
+                 <td class="px-6 py-4">{key+1}</td>
               <td class="px-6 py-4">{val.name}</td>
               <td class="px-6 py-4">{val.description}</td>
 

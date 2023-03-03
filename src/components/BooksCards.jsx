@@ -27,6 +27,7 @@ export default function () {
   }
   useEffect(() => {
     getBook();
+    document.title = "Book 📖";
   }, []);
 
   return (

@@ -40,7 +40,7 @@ export default function BookForm() {
     formdata.append("image", image);
     formdata.append("category", category);
 
-    console.log(formdata);
+    console.log(formdata.get("image"));
     try {
       let result = await BookService.AddBook(formdata);
       console.log(result);
@@ -50,6 +50,7 @@ export default function BookForm() {
   };
   useEffect(() => {
     getCategories();
+    document.title = "Add Book 📖";
   }, []);
   return (
     <div>
@@ -74,7 +75,6 @@ export default function BookForm() {
                           class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                           onChange={(e) => {
                             setname(e.target.value);
-                            console.log(e.target.value);
                           }}
                         />
                       </div>
@@ -89,7 +89,6 @@ export default function BookForm() {
                           class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                           onChange={(e) => {
                             setdescription(e.target.value);
-                            console.log(e.target.value);
                           }}
                         />
                       </div>
@@ -102,7 +101,6 @@ export default function BookForm() {
                           class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                           onChange={(e) => {
                             setisbn(e.target.value);
-                            console.log(e.target.value);
                           }}
                         />
                       </div>
@@ -115,7 +113,6 @@ export default function BookForm() {
                           class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                           onChange={(e) => {
                             setauteur(e.target.value);
-                            console.log(e.target.value);
                           }}
                         />
                       </div>
@@ -129,7 +126,6 @@ export default function BookForm() {
                             requiredclass="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
                             onChange={(e) => {
                               setediteur(e.target.value);
-                              console.log(e.target.value);
                             }}
                           />
                         </div>
@@ -147,7 +143,6 @@ export default function BookForm() {
                             class="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"
                             onChange={(e) => {
                               setdatepublication(e.target.value);
-                              console.log(e.target.value);
                             }}
                           />
                         </div>
@@ -162,7 +157,6 @@ export default function BookForm() {
                           class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50"
                           onChange={(e) => {
                             setprice(e.target.value);
-                            console.log(e.target.value);
                           }}
                         />
                       </div>
@@ -173,7 +167,6 @@ export default function BookForm() {
                           <select
                             onChange={(e) => {
                               setcategory(e.target.value);
-                              console.log(e.target.value);
                             }}
                             required
                             class="bg-gray-50 border text-gray-800 w-full bg-transparent border-gray-300  text-sm rounded-lg  block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
@@ -209,8 +202,7 @@ export default function BookForm() {
                                 className="hidden"
                                 id="dropzone-file"
                                 onChange={(e) => {
-                                  setimage(e.target.value);
-                                  console.log(e.target.value);
+                                  setimage(e.target.files[0]);
                                 }}
                                 type="file"
                                 required
