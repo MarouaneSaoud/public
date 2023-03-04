@@ -1,7 +1,10 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React ,{useEffect} from "react";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
+  useEffect(() => {
+    document.title = "Book Land 🗺️";
+  });
   return (
     <>
       <div class="font-sans bg-white flex flex-col min-h-screen w-full">

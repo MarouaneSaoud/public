@@ -56,7 +56,7 @@ export default function Cards() {
                 to={"/category"}
               >
                <FaInbox className="h-6 w-6" />
-                <span class="ml-2 text-sm font-medium">Book Categories</span>
+                <span class="ml-2 text-sm font-medium">Categories</span>
               </Link>
              
               <Link

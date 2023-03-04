@@ -46,7 +46,7 @@ export default function CategoryTable() {
       <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
         <thead class="bg-gray-50">
           <tr>
-          <th scope="col" class="px-6 w-28 py-4 font-medium text-gray-900">
+          <th scope="col" class="px-6 w-3 py-4 font-medium text-gray-900">
               #
             </th>
             <th scope="col" class="px-6 w-28 py-4 font-medium text-gray-900">
@@ -80,9 +80,7 @@ export default function CategoryTable() {
 
               <td class="px-6 py-4">
                 <div class="flex justify-end gap-4">
-                  <Link to="/">
-                    <FaPen className="text-green-700 hover:text-green-400" />
-                  </Link>
+                  
                   <button
                     onClick={(e) => {
                       deleteCategory(val._id);

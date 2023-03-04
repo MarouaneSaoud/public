@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import BookService from "../Services/Book.services";
-import CatgorieService from '../Services/Categorie.services'
+import CatgorieService from "../Services/Categorie.services";
 import { FaCuttlefish, FaBookOpen } from "react-icons/fa";
 
 export default function () {
   const [book, setbook] = useState();
-  const [category , setcategory]=useState()
+  const [category, setcategory] = useState();
   async function getbookCount() {
     try {
       let result = await BookService.countBook();
@@ -16,9 +16,8 @@ export default function () {
   }
   async function getcatCount() {
     try {
-      let result = await CatgorieService.countcategorie()
-      setcategory(result);
-      console.log(result.data)
+      let result = await CatgorieService.countcategorie();
+      setcategory(result.data.catCount);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +25,6 @@ export default function () {
   useEffect(() => {
     getbookCount();
     getcatCount();
-    
   }, []);
   return (
     <>
@@ -48,18 +46,21 @@ export default function () {
               <FaCuttlefish className="h-9" />
             </div>
             <div>
-              <span class="block text-2xl font-bold">6.8</span>
-              <span class="block text-gray-500">Average mark</span>
+              <span class="block text-2xl font-bold">{category}</span>
+              <span class="block text-gray-500">Total Categories</span>
             </div>
           </div>
 
-          <div class="flex items-center p-8  bg-white shadow rounded-lg col-span-4" style={{width:417 }}>
+          <div
+            class="flex items-center p-8  bg-white shadow rounded-lg col-span-4"
+            style={{ width: 417 }}
+          >
             <div class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-blue-600 bg-blue-100 rounded-full mr-6">
               <FaBookOpen className="h-9" />
             </div>
             <div>
               <span class="block text-2xl font-bold">{book}</span>
-              <span class="block text-gray-500">Total books  </span>
+              <span class="block text-gray-500">Total books </span>
             </div>
           </div>
           <div class=""></div>

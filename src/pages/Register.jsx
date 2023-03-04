@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import AuthSercices from "../Services/Auth.services";
 import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
@@ -12,7 +11,7 @@ function Register() {
       navigate("/dashboard");
     }
   }, [cookies, navigate]);
-  // hahoma les states li ki jibo les donnes
+
   const [name, setname] = useState();
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
@@ -24,7 +23,7 @@ function Register() {
     });
   const handleSubmit = async (event) => {
     event.preventDefault();
-     // hahia l fonction chftha
+  
     const formdata = new FormData();
     formdata.append("name", name);
     formdata.append("email", email);
@@ -33,7 +32,7 @@ function Register() {
     console.log(formdata);
     try {
       const { data } = await AuthSercices.Register(formdata);
-       // 7edek hnadak chi dial les if li lta7t ma dirihech f balek
+       
       if (data) {
         if (data.errors) {
           const { email, password, name } = data.errors;
