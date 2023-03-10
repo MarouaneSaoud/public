@@ -1,7 +1,10 @@
-import React  from "react";
+import React , {useEffect} from "react";
 import { Link } from "react-router-dom";
 
 export default function Page404 () {
+  useEffect(() => {
+    document.title = "404 😲";
+  });
   return (
     <div >
       <div class="w-full h-screen flex flex-col lg:flex-row items-center justify-center space-y-16 lg:space-y-0 space-x-8 2xl:space-x-0">
